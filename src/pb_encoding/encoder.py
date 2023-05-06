@@ -50,6 +50,11 @@ def _StructPackEncoder(format):
     return _EncodeField
 
 
+def EncodeBytes(write, value: bytes):
+    EncodeVarint(write, len(value))
+    write(value)
+
+
 EncodeFixed32 = _StructPackEncoder("<I")
 EncodeFixed64 = _StructPackEncoder("<Q")
 EncodeSFixed32 = _StructPackEncoder("<i")
@@ -74,6 +79,7 @@ _field_encoder_mapping = {
     "sfixed32": EncodeSFixed32,
     "sfixed64": EncodeSFixed64,
     "string": EncodeString,
+    "bytes": EncodeBytes,
 }
 
 

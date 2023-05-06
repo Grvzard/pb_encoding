@@ -100,6 +100,12 @@ def DecodeString(buffer, pos):
     return buffer[pos:new_pos].decode("utf-8"), new_pos
 
 
+def DecodeBytes(buffer, pos) -> Tuple[bytes, int]:
+    size, pos = DecodeVarint(buffer, pos)
+    new_pos = pos + size
+    return bytes(buffer[pos:new_pos]), new_pos
+
+
 _field_decoder_mapping = {
     "int32": DecodeSignedVarint32,
     "int64": DecodeSignedVarint,
@@ -112,6 +118,7 @@ _field_decoder_mapping = {
     "sfixed32": DecodeSFixed32,
     "sfixed64": DecodeSFixed64,
     "string": DecodeString,
+    "bytes": DecodeBytes,
 }
 
 

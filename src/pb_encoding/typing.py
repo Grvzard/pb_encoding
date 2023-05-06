@@ -12,4 +12,5 @@ SupportedType = Literal[
     "sfixed32",
     "sfixed64",
     "string",
+    "bytes",
 ]

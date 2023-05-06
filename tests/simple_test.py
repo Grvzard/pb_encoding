@@ -23,3 +23,4 @@ def test():
     assert func("sfixed64", -1680000000000)
     assert func("string", "s")
     assert func("string", "sssssssssss")
+    assert func("bytes", b"sssssssssss")
