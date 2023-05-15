@@ -1,11 +1,12 @@
 import struct
-from typing import Any, Tuple, Callable
+from typing import Any, Tuple, Callable, Union
 
 from .typing import SupportedType
 
 __all__ = (
     "DecodeField",
     "getDecoder",
+    "UnpackField",
 )
 
 
@@ -128,3 +129,9 @@ def getDecoder(type: SupportedType) -> Callable:
 
 def DecodeField(type: SupportedType, buffer, pos: int) -> Tuple[Any, int]:
     return _field_decoder_mapping[type](buffer, pos)
+
+
+def UnpackField(type: SupportedType, buffer) -> Union[str, int, float, bytes]:
+    pos = 0
+    value, _ = DecodeField(type, buffer, pos)
+    return value

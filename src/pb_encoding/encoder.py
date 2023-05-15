@@ -6,6 +6,7 @@ from .typing import SupportedType
 __all__ = (
     "EncodeField",
     "getEncoder",
+    "PackField",
 )
 
 
@@ -89,3 +90,9 @@ def getEncoder(type: SupportedType) -> Callable:
 
 def EncodeField(type: SupportedType, write: Callable[[bytes], Any], value: Any) -> None:
     return _field_encoder_mapping[type](write, value)
+
+
+def PackField(type: SupportedType, value) -> bytes:
+    b = bytearray()
+    EncodeField(type, b.__iadd__, value)
+    return bytes(b)

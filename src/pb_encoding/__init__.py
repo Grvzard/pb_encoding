@@ -4,4 +4,4 @@ from .typing import SupportedType
 
 __all__ = ("EncodeField", "getEncoder", "DecodeField", "getDecoder", "SupportedType")
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
