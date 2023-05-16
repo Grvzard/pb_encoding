@@ -60,6 +60,8 @@ EncodeFixed32 = _StructPackEncoder("<I")
 EncodeFixed64 = _StructPackEncoder("<Q")
 EncodeSFixed32 = _StructPackEncoder("<i")
 EncodeSFixed64 = _StructPackEncoder("<q")
+EncodeFloat = _StructPackEncoder("<f")
+EncodeDouble = _StructPackEncoder("<d")
 
 
 def EncodeString(write, value):
@@ -81,6 +83,8 @@ _field_encoder_mapping = {
     "sfixed64": EncodeSFixed64,
     "string": EncodeString,
     "bytes": EncodeBytes,
+    "float": EncodeFloat,
+    "double": EncodeDouble,
 }
 
 

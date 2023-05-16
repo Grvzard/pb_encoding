@@ -93,6 +93,8 @@ DecodeFixed64 = _StructPackDecoder("<Q")
 # the following two lines are needed?
 DecodeSFixed32 = _StructPackDecoder("<i")
 DecodeSFixed64 = _StructPackDecoder("<q")
+DecodeFloat = _StructPackDecoder("<f")
+DecodeDouble = _StructPackDecoder("<d")
 
 
 def DecodeString(buffer, pos):
@@ -120,6 +122,8 @@ _field_decoder_mapping = {
     "sfixed64": DecodeSFixed64,
     "string": DecodeString,
     "bytes": DecodeBytes,
+    "float": DecodeFloat,
+    "double":DecodeDouble,
 }
 
 
